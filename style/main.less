@@ -183,6 +183,9 @@ p{
 		color: #999;
 	}
 }
+// .section_body{
+// 	overflow: hidden;
+// }
 .list_item{
 	>li{
 		height: 40px;
@@ -207,7 +210,7 @@ p{
 		background: rgba(255, 255, 255, 0.8);
     	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     	border-radius: 4px;
-    	max-width: 350px;
+    	min-width: 350px;
     	position: absolute;
     	left: 140px;
     	top: 12px;
@@ -220,6 +223,9 @@ p{
 			font-size: 14px;
 		}
 	}
+}
+.university_info{
+	height: 150px;
 }
 .university_info_text{
 	float: left;
@@ -274,6 +280,10 @@ p{
 		display: inline-block;
 		font-size: 1.2em;
 		font-weight: bold;
+		a{
+			display: inline-block;
+			line-height: 30px;
+		}
 		a:hover{
 			text-decoration: underline;
 		}
@@ -286,8 +296,12 @@ p{
 		height: 30px;
 		display: block;
 		img{
-			.img();
+			width: 100%;
 		}
+	}
+	span{
+		display: inline-block;
+		margin-left: 4px;
 	}
 	span:before{
 		content: '\2014\2014';
@@ -347,6 +361,9 @@ p{
 		margin-top: 10px;
 		text-align: right;
     	word-spacing: 1em;
+    	a{
+    		margin-left: 20px;
+    	}
     	a:hover{
 			text-decoration: underline;
     	}

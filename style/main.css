@@ -322,7 +322,7 @@ p {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  max-width: 350px;
+  min-width: 350px;
   position: absolute;
   left: 140px;
   top: 12px;
@@ -334,6 +334,9 @@ p {
   line-height: 1.7;
   margin-left: 1.3em;
   font-size: 14px;
+}
+.university_info {
+  height: 150px;
 }
 .university_info_text {
   float: left;
@@ -391,6 +394,10 @@ p {
   font-size: 1.2em;
   font-weight: bold;
 }
+.work_list_company_tit h4 a {
+  display: inline-block;
+  line-height: 30px;
+}
 .work_list_company_tit h4 a:hover {
   text-decoration: underline;
 }
@@ -404,7 +411,10 @@ p {
 }
 .work_list_company_tit .work_list_company_logo img {
   width: 100%;
-  height: 100%;
+}
+.work_list_company_tit span {
+  display: inline-block;
+  margin-left: 4px;
 }
 .work_list_company_tit span:before {
   content: '\2014\2014';
@@ -464,6 +474,9 @@ p {
   margin-top: 10px;
   text-align: right;
   word-spacing: 1em;
+}
+.demo_left .links a {
+  margin-left: 20px;
 }
 .demo_left .links a:hover {
   text-decoration: underline;
