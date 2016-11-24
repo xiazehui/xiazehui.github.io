@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0 auto;
+			padding: 0 auto;
+		}
+		.canvas{
+			margin: 0px auto;
+			display: block;
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas" class="canvas">
+	当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+<script type="text/javascript">
+window.onload = function(){
+	var canvas = document.getElementById("canvas");
+	canvas.width = 600;
+	canvas.height = 600;
+	var context = canvas.getContext("2d");
+	drawRect(context, 50, 50, 200, 200, 2, "#058", "red");
+	drawRect(context, 150, 150, 200, 200, 2, "#058", "rgba(0, 255, 0, 0.5)");
+	drawStar(context, 400, 100, 25, 50, 2, "black", "rgba(255, 255, 255, 0)", 30);
+}
+function drawRect(cxt, x, y, width, height, borderWidth, borderColor, fillColor){
+	cxt.beginPath();
+	cxt.lineWidth = borderWidth;
+	cxt.fillStyle = fillColor;
+	cxt.strokeStyle = borderColor;
+	cxt.closePath();
+
+	cxt.fillRect(x, y, width, height);
+	cxt.strokeRect(x, y, width, height);
+}
+function drawStar(cxt, x, y, r, R, borderWidth, borderColor, fillColor, rot){
+	cxt.beginPath();
+	for (var i = 0; i < 5; i++) {
+		cxt.lineTo(Math.cos((18 + i*72 - rot)/180 * Math.PI) * R + x, -Math.sin((18 + i*72 - rot)/180 * Math.PI) * R + y);
+		cxt.lineTo(Math.cos((54 + i*72 - rot)/180 * Math.PI) * r + x, -Math.sin((54 + i*72 - rot)/180 * Math.PI) * r + y);
+	}
+	cxt.closePath();
+	cxt.lineWidth = borderWidth;
+	cxt.strokeStyle = borderColor;
+	cxt.fillStyle = fillColor;
+
+	cxt.fill();
+	cxt.stroke();
+}
+function drawCircular(cxt, x, y){
+
+}
+</script>
+</body>
+</html>

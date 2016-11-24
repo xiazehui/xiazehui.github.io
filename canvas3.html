@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0 auto;
+			padding: 0 auto;
+		}
+		.canvas{
+			margin: 50px auto;
+			display: block;
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas" class="canvas">
+	当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+<script type="text/javascript">
+// var array = [
+// 	{position:[{x:0,y:0},{x:400,y:0},{x:200,y:200}], color:"#caff67"},
+// 	{position:[{x:0,y:0},{x:200,y:200},{x:0,y:400}], color:"#67becf"},
+// 	{position:[{x:400,y:0},{x:400,y:200},{x:300,y:300},{x:300,y:100}], color:"#ef3d61"},
+// 	{position:[{x:300,y:100},{x:300,y:300},{x:200,y:200}], color:"#f9f51a"},
+// 	{position:[{x:200,y:200},{x:300,y:300},{x:200,y:400},{x:100,y:300}], color:"#a594c0"},
+// 	{position:[{x:100,y:300},{x:200,y:400},{x:0,y:400}], color:"#fa8ecc"},
+// 	{position:[{x:400,y:200},{x:400,y:400},{x:200,y:400}], color:"#f6ca29"}
+// ];
+window.onload = function(){
+	var canvas = document.getElementById("canvas");
+	canvas.width = 512;
+	canvas.height = 384;
+	var context = canvas.getContext("2d");
+	// for (var i = 0; i < array.length; i++) {
+	// 	draw(array[i],context);
+	// }
+	context.lineWidth = 2;
+	context.strokeStyle = "#8B2500";
+	for (var i = 0; i < 10; i++) {
+		context.beginPath();
+		context.arc(25 + i * 50, 30, 20, 0, 2 * Math.PI * (i + 1) / 10);
+		context.closePath();
+		context.stroke();
+	}
+	for (var i = 0; i < 10; i++) {
+		context.beginPath();
+		context.arc(25 + i * 50, 80, 20, 0, 2 * Math.PI * (i + 1) / 10);
+		context.stroke();
+	}
+	for (var i = 0; i < 10; i++) {
+		context.beginPath();
+		context.arc(25 + i * 50, 130, 20, 0, 2 * Math.PI * (i + 1) / 10, true);
+		context.closePath();
+		context.stroke();
+	}
+	for (var i = 0; i < 10; i++) {
+		context.beginPath();
+		context.arc(25 + i * 50, 180, 20, 0, 2 * Math.PI * (i + 1) / 10, true);
+		context.stroke();
+	}
+	context.fillStyle = "#7A67EE";
+	for (var i = 0; i < 10; i++) {
+		context.beginPath();
+		context.arc(25 + i * 50, 230, 20, 0, 2 * Math.PI * (i + 1) / 10);
+		context.closePath();
+		context.fill();
+	}
+	for (var i = 0; i < 10; i++) {
+		context.beginPath();
+		context.arc(25 + i * 50, 280, 20, 0, 2 * Math.PI * (i + 1) / 10);
+		context.fill();
+	}
+}
+// function draw(object,context){
+// 	context.beginPath();
+// 	context.moveTo(object.position[0].x,object.position[0].y);
+// 	for (var i = 1; i < object.position.length; i++) {
+// 		context.lineTo(object.position[i].x,object.position[i].y);
+// 	}
+// 	context.closePath();
+// 	context.fillStyle = object.color;
+// 	context.fill();
+
+// 	context.strokeStyle = "#000";
+// 	context.stroke();
+// }
+</script>	
+</body>
+</html>

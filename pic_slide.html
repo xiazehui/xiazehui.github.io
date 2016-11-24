@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单个图片左右滑动</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		.box{
+		width: 1000px;
+		height: 130px;
+		margin: 100px auto;
+		position: relative;
+		overflow: hidden;
+		}
+		.box a{
+			display: block;
+			width: 40px;
+			height: 40px;
+			background: yellow;
+			position: absolute;
+			line-height: 40px;
+			color: red;
+		}
+		.box li{
+			position: absolute;
+			width: 200px;
+			height: 130px;
+			list-style: none;
+		}
+		.box li img{
+			width: 200px;
+			height: 130px;
+		}
+		.no0{left: -200px;}
+		.no1{left: 0px;}
+		.no2{left: 200px;}
+		.no3{left: 400px;}
+		.no4{left: 600px;}
+		.no5{left: 800px;}
+		.no6{left: 1000px;}
+		.left_btn{
+			top: 45px;
+			left: 40px;
+		}
+		.right_btn{
+			top: 45px;
+			right: 40px;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<ul>
+		<li class="no0"><img src="images/pic/0.png"></li>
+		<li class="no1"><img src="images/pic/1.png"></li>
+		<li class="no2"><img src="images/pic/2.png"></li>
+		<li class="no3"><img src="images/pic/3.png"></li>
+		<li class="no4"><img src="images/pic/4.png"></li>
+		<li class="no5"><img src="images/pic/5.png"></li>
+		<li class="no6"><img src="images/pic/6.png"></li>
+	</ul>
+	<a href="javascript:;" class="left_btn">向左</a>
+	<a href="javascript:;" class="right_btn">向右</a>
+</div>	
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+/*单个左右滑动切换*/
+$(function(){
+	var left_btn = $(".left_btn");//向左移动按钮
+	var right_btn = $(".right_btn");//向右移动按钮
+	var box = $(".box");//存放li的容器
+	var width = 200;//每个li的宽度
+	zyslide(left_btn,right_btn,box,width);
+});
+function zyslide(left_btn,right_btn,box,width){//left_btn是向左按钮，right_btn是向右按钮，box是容器,width是每次移动的宽度
+	left_btn.on("click",function(){
+		var list = $(box).find("li");//每次执行重新定位li
+		var len = $(list).length;//获取list的长度
+		if (!$(box).find("li").is(":animated")) {
+			for (var i = 1; i < list.length; i++) {
+				var left = $(list[i]).css("left");//获取当前li的left
+				left = (parseInt(left) - width) + "px";
+				$(list[i]).animate({"left":left},400);//每个li相对于当前位置向左移动200px
+			}
+			$(box).find("li:first").css({"left":width * (len - 1) - width});//将第一个li的位置移到最后面
+			$(box).find("li:first").insertAfter($(box).find("li:last"));//同时将第一个li这个标签移到最后面
+		}
+	});
+	right_btn.on("click",function(){
+		var list = $(box).find("li");//每次执行重新定位li
+		var len = $(list).length;//获取list的长度
+		if (!$(box).find("li").is(":animated")) {
+			for (var i = 0; i < list.length - 1; i++) {
+				var left = $(list[i]).css("left");//获取当前li的left
+				left = (parseInt(left) + width) + "px";
+				$(list[i]).animate({"left":left},400);//每个li相对于当前位置向右移动200px
+			}
+			$(box).find("li:last").css({"left":width * 0 - width});//将最后一个li的位置移到最前面
+			$(box).find("li:last").insertBefore($(box).find("li:first"));//同时将最后一个li这个标签移到最前面
+		}
+	});
+}	
+</script>
+</html>

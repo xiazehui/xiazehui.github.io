@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0 auto;
+			padding: 0 auto;
+		}
+		.canvas{
+			
+		}
+	</style>
+</head>
+<body style="height: 100%;">
+<canvas id="canvas" class="canvas" style="height: 100%;">
+	当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+<script type="text/javascript">
+//定义一个包含0-9和:的三维数组,0代表不是实心圆，1代表是实心圆
+var digit =
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+            [0,0,0,0]
+        ]//:
+    ];
+var WINDOW_WIDTH = 0;
+var WINDOW_HEIGHT = 0;
+var MARGIN_LEFT = 0;//起始left
+var MARGIN_TOP = 0;//起始top
+var R = 0;//小实心园的半径
+var C = 0;//小实心园的间隙
+const endTime = new Date();
+endTime.setTime(endTime.getTime() + 3600 * 1000);//设置一个结束时间(当前时间的后一个小时)
+var curShowTimeSeconds = 0;
+var balls = [];
+var ballColor = ["#FFEC8B","#FF1493","#E0FFFF","#CAFF70","#CD0000","#B0C4DE","#C71585","#8B814C","#7FFF00","#54FF9F"];
+window.onload = function(){
+
+	WINDOW_HEIGHT = document.documentElement.clientHeight;
+	WINDOW_WIDTH = document.documentElement.clientWidth;
+	MARGIN_LEFT = Math.round(WINDOW_WIDTH/20);
+	MARGIN_TOP = Math.round(WINDOW_HEIGHT/5);
+	R = Math.round(WINDOW_WIDTH * 4 / 5 / 108) - R/8;
+	C = R/8;
+
+	var canvas = document.getElementById("canvas");
+	canvas.width = WINDOW_WIDTH;//定义canvas画布的宽
+	canvas.height = WINDOW_HEIGHT;//定义canvas画布的高
+	var context = canvas.getContext("2d");
+
+	curShowTimeSeconds = getCurrentShowTimeSeconds();//取到时间
+	//设置一个定时器
+	setInterval(function(){
+		render(context);
+		update();
+	},50);
+}
+/*获取时间差秒数*/
+function getCurrentShowTimeSeconds(){
+	var curTime = new Date();//获取当前时间
+	var ret = endTime.getTime() - curTime.getTime();//计算时间差(毫秒)
+	ret = Math.round(ret/1000);
+	return ret >= 0 ? ret : 0;//返回秒数
+}
+/*更新时间*/
+function update(){
+	var nextShowTimeSeconds = getCurrentShowTimeSeconds();//取得最新时间
+
+	var nextHours = parseInt(nextShowTimeSeconds / 3600);
+	var nextMinutes = parseInt((nextShowTimeSeconds - nextHours * 3600)/60);
+	var nextSeconds = nextShowTimeSeconds % 60;
+	//取得刚才显示时间的时分秒
+	var curHours = parseInt(curShowTimeSeconds / 3600);
+	var curMinutes = parseInt((curShowTimeSeconds - curHours * 3600)/60);
+	var curSeconds = curShowTimeSeconds % 60;
+
+	if (nextSeconds != curSeconds) {//判断最新时分秒是否等于刚才显示时间的时分秒
+		if (parseInt(nextHours / 10) != parseInt(curHours / 10)) {
+			addBalls(MARGIN_LEFT + 0, MARGIN_TOP, parseInt(curHours / 10));
+		}
+		if (parseInt(nextHours % 10) != parseInt(curHours % 10)) {
+			addBalls(MARGIN_LEFT + 15*(R+C), MARGIN_TOP, parseInt(curHours % 10));
+		}
+		if (parseInt(nextMinutes / 10) != parseInt(curMinutes / 10)) {
+			addBalls(MARGIN_LEFT + 39*(R+C), MARGIN_TOP, parseInt(curMinutes / 10));
+		}
+		if (parseInt(nextMinutes % 10) != parseInt(curMinutes % 10)) {
+			addBalls(MARGIN_LEFT + 54*(R+C), MARGIN_TOP, parseInt(curMinutes % 10));
+		}
+		if (parseInt(nextSeconds / 10) != parseInt(curSeconds / 10)) {
+			addBalls(MARGIN_LEFT + 78*(R+C), MARGIN_TOP, parseInt(curSeconds / 10));
+		}
+		if (parseInt(nextSeconds % 10) != parseInt(curSeconds % 10)) {
+			addBalls(MARGIN_LEFT + 93*(R+C), MARGIN_TOP, parseInt(curSeconds % 10));
+		}
+		curShowTimeSeconds = nextShowTimeSeconds;
+	}
+
+	updateBalls();
+}
+/*更新小球*/
+function updateBalls(){
+	for (var i = balls.length - 1; i >= 0; i--) {
+		balls[i].x +=  balls[i].vx;
+		balls[i].y +=  balls[i].vy;
+		balls[i].vy +=  balls[i].g;
+		if (balls[i].y >= WINDOW_HEIGHT - R) {
+			balls[i].y = WINDOW_HEIGHT - R;
+			balls[i].vy = -balls[i].vy * 0.75;
+		}
+	}
+	var cnt = 0;
+	for (var i = 0; i < balls.length; i++) {
+		if (balls[i].x + R > 0 && balls[i].x - R < WINDOW_WIDTH) {
+			//将还留在画布中的小球排到数组的前面(balls[cnt]--balls[balls.length]都是已经移出画布的小球)
+			balls[cnt++] = balls[i];
+		}
+	}
+	// while(balls.length > cnt){
+	// 	balls.pop();
+	// }
+	//将balls[cnt]--balls[balls.length]的小球删除
+	while(balls.length > Math.min(300,cnt)){
+		balls.pop();
+	}
+}
+/*添加彩色小球*/
+function addBalls(x, y, num){
+	for (var i = 0; i < digit[num].length; i++) {
+		for (var j = 0; j < digit[num][i].length; j++) {
+			if (digit[num][i][j] == 1) {
+				var aBall = {
+					x:x + j*2*(R+C) + (R+C),
+					y:y + i*2*(R+C) + (R+C),
+					g:1.5 + Math.random(),
+					vx:Math.pow(-1, Math.ceil(Math.random()*1000)) * 4,
+					vy:-5,
+					color:ballColor[Math.floor(Math.random()*ballColor.length)]
+				};
+				balls.push(aBall);
+			}
+		}
+	}
+}
+/*绘制时间*/
+function render(cxt){
+	cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);//对canvas画布进行更新
+	var hours = parseInt(curShowTimeSeconds / 3600);//从取得的时间算出该显示的小时
+	var minutes = parseInt((curShowTimeSeconds - hours * 3600)/60);//从取得的时间算出该显示的分钟
+	var seconds = curShowTimeSeconds % 60;//从取得的时间算出该显示的秒数
+	//绘制小时
+	renderDigit(MARGIN_LEFT, MARGIN_TOP, parseInt(hours/10), cxt);
+	renderDigit(MARGIN_LEFT + 15*(R+C), MARGIN_TOP, parseInt(hours%10), cxt);
+	//绘制冒号
+	renderDigit(MARGIN_LEFT + 30*(R+C), MARGIN_TOP, 10, cxt);
+	//绘制分钟
+	renderDigit(MARGIN_LEFT + 39*(R+C), MARGIN_TOP, parseInt(minutes/10), cxt);
+	renderDigit(MARGIN_LEFT + 54*(R+C), MARGIN_TOP, parseInt(minutes%10), cxt);
+	//绘制冒号
+	renderDigit(MARGIN_LEFT + 69*(R+C), MARGIN_TOP, 10, cxt);
+	//绘制秒数
+	renderDigit(MARGIN_LEFT + 78*(R+C), MARGIN_TOP, parseInt(seconds/10), cxt);
+	renderDigit(MARGIN_LEFT + 93*(R+C), MARGIN_TOP, parseInt(seconds%10), cxt);
+
+	//绘制小球
+	for (var i = balls.length - 1; i >= 0; i--) {
+		cxt.fillStyle = balls[i].color;
+		cxt.beginPath();
+		cxt.arc(balls[i].x, balls[i].y, R, 0, 2*Math.PI , true);
+		cxt.closePath();
+		cxt.fill();
+	}
+}
+/*对传过来的数进行判断，在进行绘制*/
+function renderDigit(x, y, num, cxt){
+	cxt.fillStyle = "rgb(0, 102, 153)";
+	for (var i = 0; i < digit[num].length; i++) {
+		for (var j = 0; j < digit[num][i].length; j++) {
+			if (digit[num][i][j] == 1) {
+				cxt.beginPath();
+				cxt.arc(x + j*2*(R+C) + (R+C), y + i*2*(R+C) + (R+C), R, 0, 2*Math.PI);
+				cxt.closePath();
+				cxt.fill();
+			}
+		}
+	}
+}
+</script>
+</body>
+</html>

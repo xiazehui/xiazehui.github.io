@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单操作</title>
+	<style type="text/css">
+		.box{
+			padding: 30px 0;
+			border-bottom: 1px solid #000;
+		}
+		h3{
+			margin: 0 auto 10px;
+		}
+		span.red{
+			color: red;
+			font-size: 14px;
+			display: none;
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+<div class="box" id="box1">
+	<h3>过滤空格</h3>
+	<input type="text" name="text" value="  [   需要过滤的空格  ]   "></input>
+	<button id="filter_btn">过滤</button>
+	<span>-----过滤掉左右空格</span>
+	<br/>
+	<br/>
+	<br/>
+	<input type="text" name="text2" value="  [   需要过&nbsp;&nbsp;&nbsp;滤的空格  ]   "></input>
+	<button id="filter_btn2">过滤</button>
+	<span>-----过滤掉所有空格</span>
+</div>
+<div class="box" id="box2">
+	<h3>验证用户是否输入</h3>
+	<input type="text" placeholder="请输入用户名"></input><span class="name red">不能为空!</span><br/>
+	<input type="password" placeholder="请输入密码"></input><span class="pwd red">不能为空!</span><br/>
+	<button id="confirm_btn">确定</button>	
+</div>
+<div class="box" id="box3">
+	<h3>用value实现placeholder的效果</h3>
+	<input type="text" id="text" value="用value实现placeholder的效果"></input>
+</div>
+<div class="box" id="box4">
+	<h3>禁止输入</h3>
+	<input type="text" placeholder="请输入用户名"></input><br/>
+	<button>禁止</button>
+</div>
+<div class="box" id="box5">
+	<h3>jquery checkbox勾选/取消勾选的诡异问题</h3>
+	<p>当使用attr()时:</p>
+	<form>
+        你爱好的运动是？<input type="checkbox" id="CheckedAll" />全选/全不选<br />
+        <input type="checkbox" name="items" value="足球" />足球
+        <input type="checkbox" name="items" value="篮球" />篮球
+        <input type="checkbox" name="items" value="羽毛球" />羽毛球
+        <input type="checkbox" name="items" value="乒乓球" />乒乓球
+        <br />
+    </form>
+    <div style="height: 50px;"></div>
+    <p>当使用prop()时:</p>
+    <form>
+        你爱好的运动是？<input type="checkbox" id="CheckedAll2" />全选/全不选<br />
+        <input type="checkbox" name="items2" value="足球" />足球
+        <input type="checkbox" name="items2" value="篮球" />篮球
+        <input type="checkbox" name="items2" value="羽毛球" />羽毛球
+        <input type="checkbox" name="items2" value="乒乓球" />乒乓球
+        <br />
+    </form>	
+</div>
+<div class="box" id="box6">
+	<h3>关闭中文输入法</h3>
+	<input type="text" placeholder="关闭中文输入法" ch-not="1"></input>
+</div>
+<div class="box" id="box7">
+	<h3>复制粘帖</h3>
+	<input type="text" name="text1"></input><span>可复制不可粘帖</span><br/><br/>
+	<input type="text" name="text2"></input><span>可粘帖不可复制</span><br/><br/>
+	<input type="text" name="text3"></input><span>不可复制不可粘帖</span><br/><br/>
+	<p>注意：粘帖时输入法会保留粘帖板，并不是复制成功哦！</p>
+</div>
+<div class="box" id="box8">
+	<h3>限制只能输入数字</h3>
+	<input type="text" placeholder="限制只能输入数字"></input>
+</div>
+<div class="box" id="box9">
+	<h3>提示可输入剩余字数</h3>
+	<textarea rows="10" placeholder="提示可输入剩余字数"></textarea>
+	<p>还可以输入<i style="margin: 0 5px;">100</i>个字</p>	
+</div>
+<div class="box" id="box10">
+	<h3>文本框中的文字自动滚动</h3>
+	<div style="overflow: hidden;">
+		<ul style="margin-top: 0;">
+			<li>清时有味是无能，</li>
+			<li>闲爱孤云静爱僧。</li>
+			<li>欲把一麾江海去，</li>
+			<li>乐游原上望昭陵。</li>
+		</ul>		
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	var btn = $("#box1 #filter_btn");
+	var btn2 = $("#box1 #filter_btn2");
+	btn.on("click",function(){
+		var str = $("#box1 input[type='text'][name='text']").val();
+		$("#box1 input[type='text'][name='text']").val(trim(str));
+	});
+	btn2.on("click",function(){
+		var str = $("#box1 input[type='text'][name='text2']").val();
+		$("#box1 input[type='text'][name='text2']").val(trim2(str));
+	});
+	function trim(str){ //删除左右两端的空格
+		return str.replace(/(^\s*)|(\s*$)/g, "");
+	}
+	function trim2(str){ //删除左右两端的空格
+		return str.replace(/(\s|\u00A0)+|(\s|\u00A0)+/g,'');
+	}
+});
+</script>
+<script type="text/javascript">
+$(function(){
+	var btn = $("#box2 #confirm_btn");
+	btn.on("click",function(){
+		var name = $("#box2 input[type='text']").val();
+		var pwd = $("#box2 input[type='password']").val();
+		if (name == "") {
+			$("#box2 .name").css("display","inline-block");
+		}
+		if (pwd == "") {
+			$("#box2 .pwd").css("display","inline-block");
+		}
+	});
+	$("#box2 input[type='text']").on("focus",function(){
+		if ($("#box2 .name").css("display") == "inline-block") {}
+		$("#box2 .name").css("display","none");
+	});
+	$("#box2 input[type='password']").on("focus",function(){
+		if ($("#box2 .pwd").css("display") == "inline-block") {}
+		$("#box2 .pwd").css("display","none");
+	});
+});
+</script>
+<script type="text/javascript">
+/*输入框的内容操作*/
+$(function(){
+	var flag = true;
+	var str = "";
+	$("#box3 #text").on({
+		change:function(){
+			if ($(this).val() == "") {
+				flag = true;
+			}else{
+				flag = false;
+			}
+		},
+		focus:function(){
+			if (flag) {
+				str = $(this).val();//将原文赋值给str
+				$(this).val("");//当输入框获取到焦点并且输入框的内容是原文时，输入框清空
+			}			
+		},
+		blur:function(){
+			if ($(this).val() == "") {
+				$(this).val(str);//当输入框失去焦点并且输入框的内容为空时，输入框填充内容
+			}			
+		}
+	});
+});	
+</script>
+<script type="text/javascript">
+$(function(){
+	var btn = $("#box4 button");
+	btn.on("click",function(){
+		if ($(this).html() == "禁止") {
+			$(this).html("激活");
+			$("#box4 input").attr("disabled","disabled");
+		}else{
+			$(this).html("禁止");
+			$("#box4 input").removeAttr("disabled");
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+	$("#box5 #CheckedAll").click(function () {
+        if ($(this).is(":checked")) {
+            $("#box5 [name=items]:checkbox").attr("checked", true);
+        }else {
+            $("#box5 [name=items]:checkbox").removeAttr("checked");
+        }
+    });
+    $("#box5 #CheckedAll2").click(function () {
+        if ($(this).is(":checked")) {
+            $("#box5 [name=items2]:checkbox").prop("checked", true);
+        } else {
+            $("#box5 [name=items2]:checkbox").prop("checked", false);
+        }
+    });
+</script>
+<script type="text/javascript">
+$(function(){           
+	var text = $("#box6 input[type='text']");
+	text.on({
+		focus:function(){
+			if ($(this).attr('ch-not')) {
+				this.style.imeMode = 'disable';
+			}
+		},blur:function(){
+			this.value = this.value.replace(/[\u4e00-\u9fa5]/g, '');
+		},keyup:function(){
+			this.value = this.value.replace(/[\u4e00-\u9fa5]/g, '');
+		}
+	});
+});
+// imeMode有四种形式，分别是：
+// active 代表输入法为中文
+// inactive 代表输入法为英文
+// auto 代表打开输入法 (默认)
+// disable 代表关闭输入法  	
+</script>
+<script type="text/javascript">
+$(function(){
+	$("#box7 input[name='text1']").on("paste",function(){
+		return false;
+	});
+	$("#box7 input[name='text2']").on("copy",function(){
+		return false;
+	});
+	$("#box7 input[name='text3']").on({
+		copy:function(){
+			return false;
+		},paste:function(){
+			return false;
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+$(function(){
+	$("#box8 input[type='text']").on("focus blur keyup",function(){
+		this.value = this.value.replace(/\D/g, '');
+	});
+});
+</script>
+<script type="text/javascript">
+$(function(){
+	var text = $("#box9 textarea");
+	var num = $("#box9 i");
+	var max = 100;
+	limit_str(text,num,max);
+});
+function limit_str(text,num,max){
+	$(text).on("propertychange input",function(){
+		var len = $(text).val().length;
+		if (len <= max) {
+			$(num).html(max - len);
+		}else{
+			$(this).val($(this).val().substring(0,max));
+		}
+	});	
+}
+</script>
+<script type="text/javascript">
+$(function(){
+	var box = $("#box10 div");
+	var height = 18;
+	slide(box,height);
+});
+function slide(box,height){
+	$(box).find("ul").delay(700).animate({"margin-top":-height},500,function(){
+		$(box).find("li:first").insertAfter($(box).find("li:last"));
+		$(box).find("ul").css("margin-top",0);
+		slide(box,height);
+	});
+}
+</script>
+</html>
