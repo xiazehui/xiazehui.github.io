@@ -1,5 +1,5 @@
-@charset "utf-8";
 /*--------------------------------------公共属性------------------------------------*/
+@charset "utf-8";
 html,
 body,
 div,
@@ -40,20 +40,6 @@ body {
 /*设置网页文本字体为微软雅黑*/
 .ma {
   margin: 0 auto;
-}
-.clearfix:after {
-  display: block;
-  overflow: hidden;
-  clear: both;
-  height: 0;
-  visibility: hidden;
-  content: '.';
-}
-.show {
-  display: block !important;
-}
-.hide {
-  display: none !important;
 }
 .paddnone {
   padding: 0;
@@ -115,15 +101,31 @@ i {
 em {
   font-style: normal;
 }
-.w100 {
-  width: 100%;
-}
-.h100 {
-  height: 100%;
-}
 .img {
   width: 100%;
   height: 100%;
+}
+table {
+  border-spacing: 0;
+}
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  *zoom: 1;
 }
 /*---------------------------------个人简历主页面--------------------------------------------*/
 a {
@@ -143,6 +145,9 @@ body {
 p {
   text-align: justify;
   line-height: 1.75;
+}
+.margin-auto {
+  margin: 0 auto;
 }
 .header {
   width: 100%;
@@ -498,4 +503,70 @@ p {
 .demo_list:last-child {
   border-bottom: none;
   margin-bottom: 0;
+}
+.dropdown-box {
+  font-size: 12px;
+  line-height: 18px;
+  vertical-align: middle;
+  padding: 0;
+  height: 24px;
+  position: relative;
+  display: inline-block;
+}
+.dropdown-box .dropdown-inner {
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  display: inline-block;
+}
+.dropdown-box .dropdown-toggle {
+  padding: 2px 16px 2px 8px;
+  color: #666;
+  min-width: 64px;
+  display: block;
+  position: relative;
+}
+.dropdown-box .dropdown-toggle:after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  top: 6px;
+  right: 6px;
+  position: absolute;
+  transform: rotate(-46deg);
+  transition: all 0.3s ease-in;
+}
+.dropdown-box .dropdown-toggle.select:after {
+  transform: rotate(134deg);
+  transition: all 0.3s ease-in;
+  top: 11px;
+}
+.dropdown-box .dropdown-menu {
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  padding: 1px 0;
+  border-radius: 0 0 2px 2px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.dropdown-box .dropdown-menu li {
+  padding: 0 1px;
+}
+.dropdown-box .dropdown-menu li a {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  color: #666666;
+  padding: 2px 8px;
+}
+.dropdown-box .dropdown-menu li a:hover {
+  background-color: #40adf1;
+  color: #fff;
 }

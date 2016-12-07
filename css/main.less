@@ -1,5 +1,5 @@
-@charset "utf-8";
 /*--------------------------------------公共属性------------------------------------*/
+@charset "utf-8";
 html, body, div, p, dl, dt, dd, ul, ol, li, table, tr, th, td, h1, h2, h3, h4, h5, h6, pre, img, form, fieldset, input, textarea, p, blockquote {margin:0px; padding:0px;border: 0;outline: none;} 
 body{font-family: 'Pingfang SC', 'Lantinghei SC', 'Helvetica Neue', Helvetica, sans-serif !important;font-size: 16px;}/*设置网页文本字体为微软雅黑*/
 .fl(l){float: left;}//左浮动
@@ -9,9 +9,6 @@ body{font-family: 'Pingfang SC', 'Lantinghei SC', 'Helvetica Neue', Helvetica, s
 .pos(a){position: absolute;}//绝对定位
 .poa(f){position: fixed;}//固定定位
 .ma{margin: 0 auto;}//水平自动居中
-.clearfix:after{display: block;overflow: hidden;clear: both;height: 0;visibility: hidden;content: '.';}//清除浮动
-.show{display: block !important;}//显示
-.hide{display: none !important;}//隐藏
 .paddnone{padding: 0;}//内边距清除
 .bornone{border: none;}//无边框
 .txt(c){text-align: center;}/*文字水平居中*/
@@ -33,9 +30,25 @@ li{ list-style: none; }
 a{ text-decoration: none; cursor: pointer;}
 i{	font-style: normal;}
 em{	font-style: normal;}
-.w100{width: 100%;}
-.h100{height: 100%;}
 .img{width: 100%;height: 100%;}
+table{ border-spacing: 0;}
+.vertical-center{
+	position: absolute; 
+	top: 50%; 
+	left: 50%; 
+	-moz-transform: translate(-50%, -50%); 
+	-ms-transform: translate(-50%, -50%); 
+	-webkit-transform: translate(-50%, -50%); 
+	transform: translate(-50%, -50%);
+}
+.clearfix:after{
+    content:".";        
+    display:block;        
+    height:0;        
+    clear:both;        
+    visibility:hidden;        
+}
+.clearfix{*zoom:1}
 /*---------------------------------个人简历主页面--------------------------------------------*/
 a{
 	color: #08c;
@@ -49,6 +62,9 @@ body{
 p{
 	text-align: justify;
 	line-height: 1.75;
+}
+.margin-auto{
+	margin: 0 auto;
 }
 .header{
 	width: 100%;
@@ -386,4 +402,73 @@ p{
     	border-bottom: none;
     	margin-bottom: 0;
     }
+}
+.dropdown-box{
+	font-size: 12px;
+    line-height: 18px;
+    vertical-align: middle;  
+    padding: 0;
+    height: 24px;
+    position: relative;
+    display: inline-block;
+    .dropdown-inner{
+    	border: 1px solid #cccccc;
+	    border-radius: 2px;
+	    display: inline-block;
+    }
+    .dropdown-toggle{
+    	padding: 2px 16px 2px 8px;
+    	color: #666;
+	    min-width: 64px;
+	    display: block;
+	    position: relative;
+	    // background: url(../images/icon/dropdown.png) right center no-repeat;
+	    &:after{
+	    	content: "";
+		    display: block;
+		    width: 6px;
+		    height: 6px;
+		    border-left: 1px solid #ccc;
+		    border-bottom: 1px solid #ccc;
+		    top: 6px;
+		    right: 6px;
+		    position: absolute;
+		    transform: rotate(-46deg);
+		    transition: all .3s ease-in;
+	    }
+	    &.select{
+	    	&:after{
+		    	transform: rotate(134deg);
+			    transition: all .3s ease-in;
+			    top: 11px;
+		    }
+	    }
+    }
+	.dropdown-menu{
+		display: none;
+		width: 100%;
+		box-sizing:border-box;
+		position: absolute;
+		left: 0;
+		padding: 1px 0;
+		border-radius: 0 0 2px 2px;
+		background-color: #ffffff;
+    	border: 1px solid #cccccc;
+    	max-height: 300px;
+    	overflow-y: auto;
+    	li{
+    		padding: 0 1px;
+    		a{
+    			width: 100%;
+    			display: block;
+			    box-sizing: border-box;
+			    color: #666666;
+			    padding: 2px 8px;
+			    &:hover{
+			    	background-color: #40adf1;
+			    	color: #fff;
+			    }
+    		}
+    	}
+	}
 }
