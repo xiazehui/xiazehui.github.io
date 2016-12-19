@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif,"新宋体"; background-color:#2A2A2A}
+/* focus_Box */
+#focus_Box{position:relative;width:710px;height:308px;margin:20px auto;}
+#focus_Box ul{position:relative;width:710px;height:308px}
+#focus_Box li{z-index:0;position:absolute; width:0px;background:#787878;height:0px;top:146px;cursor:pointer;left:377px;border-radius:4px;}
+#focus_Box li img{height:100%;vertical-align:top}
+#focus_Box .prev,#focus_Box .next{display:block;z-index:100;overflow:hidden;cursor:pointer;position:absolute;width:52px;height:52px;top:131px;}
+#focus_Box .prev:hover{background-position:left top;}
+#focus_Box .next:hover{background-position:right top;}
+#focus_Box a.imgs-scroll-btn{display:block;position:absolute;z-index:110;top:7px;right:15px;width:51px;height:23px;overflow:hidden;background:url(images/share-btn.png) no-repeat;text-indent:-999px;}
+</style>
+
+<script src="js/ZoomPic.js"></script>
+</head>
+<body>
+<div id="focus_Box">
+	<span class="prev">&nbsp;</span>
+	<span class="next">&nbsp;</span>
+	<ul>
+		<li>
+			<a href="#">
+				<img width="445" height="308" alt="Photo sharing jq22" src="images/pic/jindian.png" />
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img width="445" height="308" alt="Photo sharing jq22" src="images/pic/jindian.png" />
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img width="445" height="308" alt="Photo sharing jq22" src="images/pic/jindian.png" />
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img width="445" height="308" alt="Photo sharing jq22" src="images/pic/jindian.png" />
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img width="445" height="308" alt="Photo sharing jq22" src="images/pic/jindian.png" />
+			</a>
+		</li>
+	</ul>
+</div>	
+</body>
+</html>
