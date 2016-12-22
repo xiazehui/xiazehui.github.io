@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用value实现placeholder的效果</title>
+	<link rel="stylesheet" type="text/css" href="../../common/sui.css">
+	<style type="text/css">
+		.box{
+			width: 500px;
+		    margin: 20px auto 0;
+		    padding: 40px 20px;
+		}
+	</style>
+</head>
+<body>
+<form class="box sui-form form-horizontal sui-validate">
+	<input type="text" class="input-large input-fat" value="用value实现placeholder的效果">
+</form>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript">
+/*输入框的内容操作*/
+$(function(){
+	var flag = true;
+	var str = "";
+	$(".box input[type='text']").on({
+		change:function(){
+			if ($(this).val() == "") {
+				flag = true;
+			}else{
+				flag = false;
+			}
+		},
+		focus:function(){
+			if (flag) {
+				str = $(this).val();//将原文赋值给str
+				$(this).val("");//当输入框获取到焦点并且输入框的内容是原文时，输入框清空
+			}			
+		},
+		blur:function(){
+			if ($(this).val() == "") {
+				$(this).val(str);//当输入框失去焦点并且输入框的内容为空时，输入框填充内容
+			}			
+		}
+	});
+});	
+</script>
+</body>
+</html>

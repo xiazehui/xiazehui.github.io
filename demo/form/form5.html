@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery checkbox勾选/取消勾选的诡异问题</title>
+	<link rel="stylesheet" type="text/css" href="../../common/sui.css">
+	<style type="text/css">
+		.box{
+			width: 500px;
+		    margin: 20px auto 0;
+		    padding: 40px 20px;
+		}
+	</style>
+</head>
+<body>
+<form class="box sui-form form-horizontal sui-validate" id="box5">
+	<div class="control-group">
+	    <label for="text" class="control-label v-top">当使用attr()时:</label>
+	    <div class="controls">
+	      	你爱好的运动是？
+	      	<input type="checkbox" id="CheckedAll" />全选/全不选<br /><br />
+	        <input type="checkbox" name="items" value="足球" />足球
+	        <input type="checkbox" name="items" value="篮球" />篮球
+	        <input type="checkbox" name="items" value="羽毛球" />羽毛球
+	        <input type="checkbox" name="items" value="乒乓球" />乒乓球
+	    </div>
+  	</div>
+  	<div class="control-group">
+	    <label for="text" class="control-label v-top">当使用prop()时:</label>
+	    <div class="controls">
+	      	你爱好的运动是？
+	      	<input type="checkbox" id="CheckedAll2" />全选/全不选<br /><br />
+	        <input type="checkbox" name="items2" value="足球" />足球
+	        <input type="checkbox" name="items2" value="篮球" />篮球
+	        <input type="checkbox" name="items2" value="羽毛球" />羽毛球
+	        <input type="checkbox" name="items2" value="乒乓球" />乒乓球
+	    </div>
+  	</div>
+</form>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript">
+	$(".box #CheckedAll").click(function () {
+        if ($(this).is(":checked")) {
+            $(".box [name=items]:checkbox").attr("checked", true);
+        }else {
+            $(".box [name=items]:checkbox").removeAttr("checked");
+        }
+    });
+    $(".box #CheckedAll2").click(function () {
+        if ($(this).is(":checked")) {
+            $(".box [name=items2]:checkbox").prop("checked", true);
+        } else {
+            $(".box [name=items2]:checkbox").prop("checked", false);
+        }
+    });
+</script>
+</body>
+</html>

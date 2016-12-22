@@ -3469,7 +3469,7 @@ pre .sui-code,
   display: table;
 }
 .sui-form.form-horizontal .control-label {
-  width: 96px;
+  width: 100px;
   text-align: right;
   display: table-cell;
   vertical-align: middle;

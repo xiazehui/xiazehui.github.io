@@ -6,20 +6,23 @@
 	<style type="text/css">
 		*{margin: 0;padding: 0;}
 		.box{
-		width: 1000px;
-		height: 130px;
-		margin: 100px auto;
-		position: relative;
-		overflow: hidden;
+			width: 1000px;
+			height: 130px;
+			margin: 100px auto;
+			position: relative;
+			overflow: hidden;
 		}
 		.box a{
 			display: block;
 			width: 40px;
-			height: 40px;
-			background: yellow;
+			height: 80px;
+			background-color: rgba(0, 0, 0, .5);
 			position: absolute;
-			line-height: 40px;
-			color: red;
+			line-height: 80px;
+			color: #fff;
+			top: 25px;
+			text-decoration: none;
+			text-align: center;
 		}
 		.box li{
 			position: absolute;
@@ -38,33 +41,31 @@
 		.no4{left: 600px;}
 		.no5{left: 800px;}
 		.no6{left: 1000px;}
-		.left_btn{
-			top: 45px;
-			left: 40px;
+		.left_btn{〈
+			left: 0;
 		}
 		.right_btn{
-			top: 45px;
-			right: 40px;
+			right: 0;
 		}
 	</style>
 </head>
 <body>
 <div class="box">
 	<ul>
-		<li class="no0"><img src="images/pic/0.png"></li>
-		<li class="no1"><img src="images/pic/1.png"></li>
-		<li class="no2"><img src="images/pic/2.png"></li>
-		<li class="no3"><img src="images/pic/3.png"></li>
-		<li class="no4"><img src="images/pic/4.png"></li>
-		<li class="no5"><img src="images/pic/5.png"></li>
-		<li class="no6"><img src="images/pic/6.png"></li>
+		<li class="no0"><img src="../images/pic/0.png"></li>
+		<li class="no1"><img src="../images/pic/1.png"></li>
+		<li class="no2"><img src="../images/pic/2.png"></li>
+		<li class="no3"><img src="../images/pic/3.png"></li>
+		<li class="no4"><img src="../images/pic/4.png"></li>
+		<li class="no5"><img src="../images/pic/5.png"></li>
+		<li class="no6"><img src="../images/pic/6.png"></li>
 	</ul>
-	<a href="javascript:;" class="left_btn">向左</a>
-	<a href="javascript:;" class="right_btn">向右</a>
+	<a href="javascript:;" class="left_btn">〈</a>
+	<a href="javascript:;" class="right_btn">〉</a>
 </div>	
 </body>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
 <script type="text/javascript">
 /*单个左右滑动切换*/
 $(function(){

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复制粘帖</title>
+	<link rel="stylesheet" type="text/css" href="../../common/sui.css">
+	<style type="text/css">
+		.box{
+			width: 500px;
+		    margin: 20px auto 0;
+		    padding: 40px 20px;
+		}
+	</style>
+</head>
+<body>
+<form class="box sui-form form-horizontal sui-validate" id="box7">
+	<div class="control-group">
+	    <label for="text" class="control-label">可复制不可粘帖:</label>
+	    <div class="controls">
+	      	<input type="text" name="text1">
+	    </div>
+  	</div>
+  	<div class="control-group">
+	    <label for="text" class="control-label">可粘帖不可复制:</label>
+	    <div class="controls">
+	      	<input type="text" name="text2">
+	    </div>
+  	</div>
+  	<div class="control-group">
+	    <label for="text" class="control-label">不可复制不可粘帖:</label>
+	    <div class="controls">
+	      	<input type="text" name="text3">
+	    </div>
+  	</div>
+  	<div class="control-group">
+	    <label for="text" class="control-label">&nbsp;</label>
+	    <div class="controls">
+	    	<span class="sui-text-danger">注意：粘帖时输入法会保留粘帖板，并不是复制成功哦！</span>
+	    </div>
+  	</div>
+</form>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".box input[name='text1']").on("paste",function(){
+		return false;
+	});
+	$(".box input[name='text2']").on("copy",function(){
+		return false;
+	});
+	$(".box input[name='text3']").on({
+		copy:function(){
+			return false;
+		},paste:function(){
+			return false;
+		}
+	});
+});
+</script>
+</body>
+</html>

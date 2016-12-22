@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>省市区三级联动</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		.dropdown-box {
+		  font-size: 12px;
+		  line-height: 18px;
+		  vertical-align: middle;
+		  padding: 0;
+		  height: 24px;
+		  position: relative;
+		  display: inline-block;
+		}
+		.dropdown-box .dropdown-inner {
+		  border: 1px solid #cccccc;
+		  border-radius: 2px;
+		  display: inline-block;
+		}
+		.dropdown-box .dropdown-toggle {
+		  padding: 2px 16px 2px 8px;
+		  color: #666;
+		  min-width: 64px;
+		  display: block;
+		  position: relative;
+		}
+		.dropdown-box .dropdown-toggle:after {
+		  content: "";
+		  display: block;
+		  width: 6px;
+		  height: 6px;
+		  border-left: 1px solid #ccc;
+		  border-bottom: 1px solid #ccc;
+		  top: 6px;
+		  right: 6px;
+		  position: absolute;
+		  transform: rotate(-46deg);
+		  transition: all 0.3s ease-in;
+		}
+		.dropdown-box .dropdown-toggle.select:after {
+		  transform: rotate(134deg);
+		  transition: all 0.3s ease-in;
+		  top: 11px;
+		}
+		.dropdown-box .dropdown-menu {
+		  display: none;
+		  width: 100%;
+		  box-sizing: border-box;
+		  position: absolute;
+		  left: 0;
+		  padding: 1px 0;
+		  border-radius: 0 0 2px 2px;
+		  background-color: #ffffff;
+		  border: 1px solid #cccccc;
+		  max-height: 300px;
+		  overflow-y: auto;
+		}
+		.dropdown-box .dropdown-menu li {
+		  padding: 0 1px;
+		}
+		.dropdown-box .dropdown-menu li a {
+		  width: 100%;
+		  display: block;
+		  box-sizing: border-box;
+		  color: #666666;
+		  padding: 2px 8px;
+		}
+		.dropdown-box .dropdown-menu li a:hover {
+		  background-color: #40adf1;
+		  color: #fff;
+		}		
+	</style>
+</head>
+<body style="margin: 50px;">
+<div id="dropdown" style="width: 290px; margin: 0 auto;">
+	<div class="dropdown-box" id="prov">
+		<div class="dropdown-inner">
+			<a href="javascript:;" class="dropdown-toggle"><span>请选择</span></a>
+			<ul class="dropdown-menu">
+				
+			</ul>		
+		</div>
+	</div>
+	<div class="dropdown-box" id="city">
+		<div class="dropdown-inner">
+			<a href="javascript:;" class="dropdown-toggle"><span>请选择</span></a>
+			<ul class="dropdown-menu">
+				
+			</ul>		
+		</div>
+	</div>
+	<div class="dropdown-box" id="area">
+		<div class="dropdown-inner">
+			<a href="javascript:;" class="dropdown-toggle"><span>请选择</span></a>
+			<ul class="dropdown-menu">
+				
+			</ul>		
+		</div>
+	</div>
+	<input id="provIndex" type="hidden" value="">
+	<input id="cityIndex" type="hidden" value="">
+	<input id="provVal" type="hidden" value="">
+	<input id="cityVal" type="hidden" value="">
+	<input id="areaVal" type="hidden" value="">	
+</div>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript" src="../js/dropdown.js"></script>
+<script type="text/javascript">
+	$("#dropdown").dropdown("#prov","#city","#area");
+</script>
+</body>
+</html>

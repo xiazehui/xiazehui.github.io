@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>提示可输入剩余字数</title>
+	<link rel="stylesheet" type="text/css" href="../../common/sui.css">
+	<style type="text/css">
+		.box{
+			width: 500px;
+		    margin: 20px auto 0;
+		    padding: 40px 20px;
+		}
+	</style>
+</head>
+<body>
+<form class="box sui-form form-horizontal sui-validate">
+	<textarea rows="10" placeholder="提示可输入剩余字数"></textarea>
+	<p>还可以输入<i style="margin: 0 5px;">100</i>个字</p>	
+</form>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var text = $(".box textarea");
+	var num = $(".box i");
+	var max = 100;
+	limit_str(text,num,max);
+});
+function limit_str(text,num,max){
+	$(text).on("propertychange input",function(){
+		var len = $(text).val().length;
+		if (len <= max) {
+			$(num).html(max - len);
+		}else{
+			$(this).val($(this).val().substring(0,max));
+		}
+	});	
+}
+</script>
+</body>
+</html>

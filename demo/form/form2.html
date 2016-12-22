@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证用户是否输入</title>
+	<link rel="stylesheet" type="text/css" href="../../common/sui.css">
+	<style type="text/css">
+		.box{
+			width: 500px;
+		    margin: 20px auto 0;
+		    padding: 40px 20px;
+		}
+		span.red{
+			color: red;
+			font-size: 14px;
+			display: none;
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+<form class="box sui-form form-horizontal sui-validate">
+	<div class="control-group">
+	    <label for="text" class="control-label">请输入用户名:</label>
+	    <div class="controls">
+	      	<input type="text" placeholder="请输入用户名"><span class="name red">不能为空!</span>
+	    </div>
+  	</div>
+	<div class="control-group">
+	    <label for="text" class="control-label">请输入密码:</label>
+	    <div class="controls">
+	      	<input type="password" placeholder="请输入密码"><span class="pwd red">不能为空!</span>
+	    </div>
+  	</div>
+  	<div class="control-group">
+	    <label for="text" class="control-label"></label>
+	    <div class="controls">
+	      	<a href="javascript:;" id="confirm_btn" class="sui-btn">确定</a>
+	    </div>
+  	</div>
+</form>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var btn = $(".box #confirm_btn");
+	btn.on("click",function(){
+		var name = $(".box input[type='text']").val();
+		var pwd = $(".box input[type='password']").val();
+		if (name == "") {
+			$(".box .name").css("display","inline-block");
+		}
+		if (pwd == "") {
+			$(".box .pwd").css("display","inline-block");
+		}
+	});
+	$(".box input[type='text']").on("focus",function(){
+		if ($(".box .name").css("display") == "inline-block") {}
+		$(".box .name").css("display","none");
+	});
+	$(".box input[type='password']").on("focus",function(){
+		if ($(".box .pwd").css("display") == "inline-block") {}
+		$(".box .pwd").css("display","none");
+	});
+});
+</script>
+</body>
+</html>

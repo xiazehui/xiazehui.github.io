@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单操作</title>
+	<style type="text/css">
+		.box{
+			padding: 30px 0;
+			border-bottom: 1px solid #000;
+		}
+		
+	</style>
+</head>
+<body>
+<div class="box" id="box10">
+	<h3>文本框中的文字自动滚动</h3>
+	<div style="overflow: hidden;">
+		<ul style="margin-top: 0;">
+			<li>清时有味是无能，</li>
+			<li>闲爱孤云静爱僧。</li>
+			<li>欲把一麾江海去，</li>
+			<li>乐游原上望昭陵。</li>
+		</ul>		
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../common/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var box = $("#box10 div");
+	var height = 18;
+	slide(box,height);
+});
+function slide(box,height){
+	$(box).find("ul").delay(700).animate({"margin-top":-height},500,function(){
+		$(box).find("li:first").insertAfter($(box).find("li:last"));
+		$(box).find("ul").css("margin-top",0);
+		slide(box,height);
+	});
+}
+</script>
+</html>

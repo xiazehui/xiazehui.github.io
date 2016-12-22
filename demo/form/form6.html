@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关闭中文输入法</title>
+	<link rel="stylesheet" type="text/css" href="../../common/sui.css">
+	<style type="text/css">
+		.box{
+			width: 500px;
+		    margin: 20px auto 0;
+		    padding: 40px 20px;
+		}
+	</style>
+</head>
+<body>
+<form class="box sui-form form-horizontal sui-validate">
+	<input type="text" placeholder="关闭中文输入法" ch-not="1">
+</form>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){           
+	var text = $(".box input[type='text']");
+	text.on({
+		focus:function(){
+			if ($(this).attr('ch-not')) {
+				this.style.imeMode = 'disable';
+			}
+		},blur:function(){
+			this.value = this.value.replace(/[\u4e00-\u9fa5]/g, '');
+		},keyup:function(){
+			this.value = this.value.replace(/[\u4e00-\u9fa5]/g, '');
+		}
+	});
+});
+// imeMode有四种形式，分别是：
+// active 代表输入法为中文
+// inactive 代表输入法为英文
+// auto 代表打开输入法 (默认)
+// disable 代表关闭输入法  	
+</script>
+</body>
+</html>

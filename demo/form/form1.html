@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤空格</title>
+	<link rel="stylesheet" type="text/css" href="../../common/sui.css">
+	<style type="text/css">
+		.box{
+			width: 500px;
+		    margin: 20px auto 0;
+		    padding: 40px 20px;
+		}
+	</style>
+</head>
+<body>
+<form class="box sui-form form-horizontal sui-validate">
+	<div class="control-group">
+	    <label for="text" class="control-label">过滤掉左右空格:</label>
+	    <div class="controls">
+	      	<input type="text" name="text" value="  [   需要过滤的空格  ]   ">
+	      	<a href="javascript:;" class="sui-btn" id="filter_btn">过滤</a>
+	    </div>
+  	</div>
+	<div class="control-group">
+	    <label for="text" class="control-label">过滤掉所有空格:</label>
+	    <div class="controls">
+	      	<input type="text" name="text2" value="  [   需要过&nbsp;&nbsp;&nbsp;滤的空格  ]   ">
+	      	<a href="javascript:;" class="sui-btn" id="filter_btn2">过滤</a>
+	    </div>
+  	</div>
+</form>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var btn = $(".box #filter_btn");
+	var btn2 = $(".box #filter_btn2");
+	btn.on("click",function(){
+		var str = $(".box input[type='text'][name='text']").val();
+		$(".box input[type='text'][name='text']").val(trim(str));
+	});
+	btn2.on("click",function(){
+		var str = $(".box input[type='text'][name='text2']").val();
+		$(".box input[type='text'][name='text2']").val(trim2(str));
+	});
+	function trim(str){ //删除左右两端的空格
+		return str.replace(/(^\s*)|(\s*$)/g, "");
+	}
+	function trim2(str){ //删除左右两端的空格
+		return str.replace(/(\s|\u00A0)+|(\s|\u00A0)+/g,'');
+	}
+});	
+</script>
+</body>
+</html>

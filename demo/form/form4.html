@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>禁止输入</title>
+	<link rel="stylesheet" type="text/css" href="../../common/sui.css">
+	<style type="text/css">
+		.box{
+			width: 500px;
+		    margin: 20px auto 0;
+		    padding: 40px 20px;
+		}
+	</style>
+</head>
+<body>
+<form class="box sui-form form-horizontal sui-validate">
+	<div class="control-group">
+	    <label for="text" class="control-label">请输入用户名:</label>
+	    <div class="controls">
+	      	<input type="text" placeholder="请输入用户名">
+	    </div>
+  	</div>
+  	<div class="control-group">
+	    <label for="text" class="control-label">&nbsp;</label>
+	    <div class="controls">
+	      	<a href="javascript:;" class="sui-btn">禁止</a>
+	    </div>
+  	</div>
+</form>
+<script type="text/javascript" src="../../common/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var btn = $(".box a");
+	btn.on("click",function(){
+		if ($(this).html() == "禁止") {
+			$(this).html("激活");
+			$(".box input").attr("disabled","disabled");
+		}else{
+			$(this).html("禁止");
+			$(".box input").removeAttr("disabled");
+		}
+	});
+});
+</script>
+</body>
+</html>
